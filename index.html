@@ -13,7 +13,29 @@
                 else if (randNum == 1) return "Paper";
                 else return "Scissors";
             }
-            
+
+            function playRound(playerSelection, computerSelection) {
+                if ((playerSelection.toUpperCase() === "ROCK") && (computerSelection.toUpperCase() === "SCISSORS")) {
+                    return "You win! Rock beats Scissors";
+                } else if ((playerSelection.toUpperCase() === "PAPER") && (computerSelection.toUpperCase() === "ROCK")) {
+                    return "You win! Paper beats Rock";
+                } else if ((playerSelection.toUpperCase() === "SCISSORS") && (computerSelection.toUpperCase() === "PAPER")) {
+                    return "You win! Scissors beats Paper";
+                } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
+                    return "It's a tie!"
+                } else {
+                    playerSelection = playerSelection.toLowerCase();
+                    playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase());
+                    computerSelection = computerSelection.toLowerCase();
+                    computerSelection = computerSelection.replace(computerSelection.charAt(0), computerSelection.charAt(0).toUpperCase());
+                    return `You lose! ${computerSelection} beats ${playerSelection}`;
+                }
+            }
+
+            const computerSelection = getComputerChoice();
+            const playerSelection = "scissors";
+            console.log(playRound(playerSelection, computerSelection));
+
         </script>
     </body>
 </html>
