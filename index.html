@@ -3,51 +3,13 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <script src="./script.js" defer></script>
         <title>Bato Bato Pick</title>
     </head>
     <body>
-        <script>
-            function getComputerChoice() {
-                let randNum = Math.floor(Math.random() * 3);
-                if (randNum == 0) return "Rock";
-                else if (randNum == 1) return "Paper";
-                else return "Scissors";
-            }
-
-            function playRound(playerSelection, computerSelection) {
-                if ((playerSelection.toUpperCase() === "ROCK") && (computerSelection.toUpperCase() === "SCISSORS")) {
-                    return "You win! Rock beats Scissors";
-                } else if ((playerSelection.toUpperCase() === "PAPER") && (computerSelection.toUpperCase() === "ROCK")) {
-                    return "You win! Paper beats Rock";
-                } else if ((playerSelection.toUpperCase() === "SCISSORS") && (computerSelection.toUpperCase() === "PAPER")) {
-                    return "You win! Scissors beats Paper";
-                } else if (playerSelection.toUpperCase() === computerSelection.toUpperCase()) {
-                    return "It's a tie! Score does not count"
-                } else {
-                    playerSelection = playerSelection.toLowerCase();
-                    playerSelection = playerSelection.replace(playerSelection.charAt(0), playerSelection.charAt(0).toUpperCase());
-                    computerSelection = computerSelection.toLowerCase();
-                    computerSelection = computerSelection.replace(computerSelection.charAt(0), computerSelection.charAt(0).toUpperCase());
-                    return `You lose! ${computerSelection} beats ${playerSelection}`;
-                }
-            }
-
-            function game() {
-                let playerScore = 0;
-                let computerScore = 0;
-                while ((playerScore != 3) && (computerScore != 3)) {
-                    const computerSelection = getComputerChoice();
-                    const playerSelection = prompt("Choice: ");
-                    let round = playRound(playerSelection, computerSelection);
-                    if (round.charAt(4) === "w") playerScore++;
-                    else if (round.charAt(4) === "l") computerScore++;
-                    console.log(round + ` (Score: ${playerScore} - ${computerScore})`);
-                }
-                if (playerScore > computerScore) console.log("Congratulations, You won!");
-                else console.log("You Lost! Try again next time.")
-            }
-
-
-        </script>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+        <div class="container"></div>
     </body>
 </html>
